@@ -23,7 +23,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get install -y build-essential
 sudo apt-get install -y \
 \
-	git curl wget python3 python3-pip g++ make gcc \
+	git curl wget python3 python3-pip g++ make gcc clang-15 \
 
 
 #  * ! Install Vscode
