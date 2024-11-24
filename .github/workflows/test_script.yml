@@ -72,11 +72,4 @@ jobs:
             exit 1
           fi
 
-
-          # Check if Z is installed
-          if ! command -v z &> /dev/null; then
-            echo "Z is not installed"
-            exit 1
-          fi
-
           echo "All checks passed successfully."

@@ -77,13 +77,6 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
 	git clone https://github.com/zsh-users/zsh-completions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 fi
 
-#  * ! Install z command
-
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/z" ]; then
-	echo "Install z command..."
-	git clone https://github.com/rupa/z.git "$HOME/.oh-my-zsh/custom/plugins/z"
-fi
-
 
 #  * ! Install Powerlevel10k
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
