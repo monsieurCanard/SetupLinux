@@ -13,8 +13,8 @@ steps:
 
   - name: Run SetupFile
     run: |
-    chmod +x ./bash_setup
-    bash setup.sh
+      chmod +x ./bash_setup
+      bash setup.sh
 
   - name: Verify Setup
     run : |
