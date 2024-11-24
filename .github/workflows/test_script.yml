@@ -30,6 +30,24 @@ jobs:
             exit 1
           fi
 
+          # Check if Git is installed
+          if ! command -v git &> /dev/null; then
+            echo "Git is not installed"
+            exit 1
+          fi
+
+          # Check if Docker is installed
+          if ! command -v docker &> /dev/null; then
+            echo "Docker is not installed"
+            exit 1
+          fi
+
+          # Check if Docker Compose is installed
+          if ! command -v docker-compose &> /dev/null; then
+            echo "Docker Compose is not installed"
+            exit 1
+          fi
+
           # Check if Oh My Zsh is installed
           if [ ! -d "$HOME/.oh-my-zsh" ]; then
             echo "Oh My Zsh is not installed"
@@ -39,6 +57,42 @@ jobs:
           # Check if Powerlevel10k is installed
           if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
             echo "Powerlevel10k is not installed"
+            exit 1
+          fi
+
+          # Check if Zsh Autosuggestions is installed
+          if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+            echo "Zsh Autosuggestions is not installed"
+            exit 1
+          fi
+
+          # Check if Zsh Syntax Highlighting is installed
+          if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+            echo "Zsh Syntax Highlighting is not installed"
+            exit 1
+          fi
+
+           # Check if Zsh Completion is installed
+          if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
+            echo "Zsh Completion is not installed"
+            exit 1
+          fi
+
+           # Check if Zsh History Substring Search is installed
+          if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-history-substring-search" ]; then
+            echo "Zsh History Substring Search is not installed"
+            exit 1
+          fi
+
+          # Check if Zsh Navigation Tools is installed
+          if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-navigation-tools" ]; then
+            echo "Zsh Navigation Tools is not installed"
+            exit 1
+          fi
+
+          # Check if Z is installed
+          if ! command -v z &> /dev/null; then
+            echo "Z is not installed"
             exit 1
           fi
 
