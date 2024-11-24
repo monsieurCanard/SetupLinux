@@ -3,42 +3,43 @@ name: Test Script Bash
 on: [push, pull_request] # Déclenche le workflow sur un push ou une PR
 
 jobs:
-test:
-runs-on: ubuntu-latest # Utiliser une image Ubuntu propre
+  test:
+    runs-on: ubuntu-latest # Utiliser une image Ubuntu propre
 
-steps:
-  # Étape 1: Checkout le code du repository
-  - name: Checkout repository
-    uses: actions/checkout@v3
+    steps:
+      # Étape 1: Checkout le code du repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-  - name: Run SetupFile
-    run: |
-      chmod +x ./bash_setup
-      bash setup.sh
+      - name: Run SetupFile
+        run: |
+          chmod +x ./setup.sh
+          bash setup.sh
 
-  - name: Verify Setup
-    run : |
-      # Check if VSCode is installed
-      if ! command -v code &> /dev/null; then
-        echo "VSCode is not installed"
-        exit 1
-      fi
+      - name: Verify Setup
+        run: |
+          # Check if VSCode is installed
+          if ! command -v code &> /dev/null; then
+            echo "VSCode is not installed"
+            exit 1
+          fi
 
-    # Check if Firefox is installed
-      if ! command -v firefox &> /dev/null; then
-        echo "Firefox is not installed"
-        exit 1
-      fi
+          # Check if Firefox is installed
+          if ! command -v firefox &> /dev/null; then
+            echo "Firefox is not installed"
+            exit 1
+          fi
 
-    # Check if Oh My Zsh is installed
-      if [ ! -d "$HOME/.oh-my-zsh" ]; then
-        echo "Oh My Zsh is not installed"
-        exit 1
-      fi
+          # Check if Oh My Zsh is installed
+          if [ ! -d "$HOME/.oh-my-zsh" ]; then
+            echo "Oh My Zsh is not installed"
+            exit 1
+          fi
 
-    # Check if Powerlevel10k is installed
-      if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
-        echo "Powerlevel10k is not installed"
-        exit 1
-      fi
-      echo "All checks passed successfully."
+          # Check if Powerlevel10k is installed
+          if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+            echo "Powerlevel10k is not installed"
+            exit 1
+          fi
+
+          echo "All checks passed successfully."
