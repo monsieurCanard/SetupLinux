@@ -16,9 +16,8 @@ echo "You need to have an internet connection and sudo rights."
 # 	exit 1
 # fi
 
-/**
- * ! Update and upgrade packages
- */
+#  * ! Update and upgrade packages
+
 echo "Update and upgrade packages..."
 sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get install -y build-essential
@@ -26,9 +25,9 @@ sudo apt-get install -y \
 \
 	git curl wget python3 python3-pip g++ make gcc \
 
-/**
- * ! Install Vscode
- */
+
+#  * ! Install Vscode
+
 echo "Installing VSCode..."
 sudo apt install -y software-properties-common apt-transport-https
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -37,15 +36,13 @@ sudo apt update
 sudo apt install -y code
 
 
-/**
- * ! Install Mozilla Firefox
- */
+#  * ! Install Mozilla Firefox
+
 echo "Installing Mozilla Firefox..."
 sudo apt install -y firefox
 
-/**
- * ! Install Docker
- */
+#  * ! Install Docker
+
 echo "Installing Docker..."
 sudo apt install -y docker.io
 sudo systemctl start docker
@@ -53,16 +50,13 @@ sudo systemctl enable docker
 sudo usermod -aG docker $USER
 
 
-/**
- * ! Install Docker Compose
- */
+#  * ! Install Docker Compose
+
 echo "Installing Docker Compose..."
 sudo apt install -y docker-compose
 
 
-/**
- * ! Install Oh My Zsh
- */
+#  * ! Install Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	echo "Install Oh My Zsh..."
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -71,9 +65,9 @@ else
 	echo "Oh My Zsh already installed."
 fi
 
-/**
- * ! Install Zsh plugins
- */
+
+#  * ! Install Zsh plugins
+
 echo "Install Zsh plugins..."
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
@@ -83,9 +77,7 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
 	git clone https://github.com/zsh-users/zsh-completions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 fi
 
-/**
- * ! Install z command
- */
+#  * ! Install z command
 
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/z" ]; then
 	echo "Install z command..."
@@ -93,9 +85,7 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/z" ]; then
 fi
 
 
-/**
- * ! Install Powerlevel10k
- */
+#  * ! Install Powerlevel10k
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
 	echo "Installation de Powerlevel10k..."
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
