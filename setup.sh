@@ -79,20 +79,8 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 fi
 
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-fi
-
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
 	git clone https://github.com/zsh-users/zsh-completions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
-fi
-
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-history-substring-search" ]; then
-	git clone https://github.com/zsh-users/zsh-history-substring-search.git "$HOME/.oh-my-zsh/custom/plugins/zsh-history-substring-search"
-fi
-
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-navigation-tools" ]; then
-	git clone https://github.com/zsh-users/zsh-navigation-tools.git "$HOME/.oh-my-zsh/custom/plugins/zsh-navigation-tools"
 fi
 
 /**
