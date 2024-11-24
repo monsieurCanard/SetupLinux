@@ -3,14 +3,14 @@
 echo "Install setup for Monsieur Canard !"
 echo "You need to have an internet connection and sudo rights."
 echo "Press Enter to continue..."
-read -n 1 -s
+# read -n 1 -s
 
-if [ $? -eq 0]; then
-	echo "Let's go !"
-else
-	echo "Exiting..."
-	exit 1
-fi
+# if [ $? -eq 0]; then
+# 	echo "Let's go !"
+# else
+# 	echo "Exiting..."
+# 	exit 1
+# fi
 
 echo "Update and upgrade packages..."
 sudo apt-get update -y && sudo apt-get upgrade -y
