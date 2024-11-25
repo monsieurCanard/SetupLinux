@@ -17,14 +17,16 @@ install_debian() {
 	echo "Debian/Ubuntu detected ! Installing packages..."
     sudo apt-get update -y && sudo apt-get upgrade -y
     sudo apt-get install -y build-essential git curl valgrind wget python3 python3-pip g++ make gcc clang-15
-    sudo apt-get install -y software-properties-common apt-transport-https
-    wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    sudo apt-get install -y software-properties-common apt-transport-https snapd
+    sudo systemctl enable --now snapd.socket
+    sudo ln -s /var/lib/snapd/snap /snap
+    sudo snap install code --classic
     sudo apt update
-    sudo apt install -y code firefox docker.io docker-compose
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    sudo usermod -aG docker $USER
+    sudo apt install -y firefox
+	#  docker.io docker-compose
+    # sudo systemctl start docker
+    # sudo systemctl enable docker
+    # sudo usermod -aG docker $USER
 }
 
 # Function to install packages for Fedora
@@ -57,12 +59,12 @@ esac
 
 #  * ! Install Vscode
 
-echo "Installing VSCode..."
-sudo apt install -y software-properties-common apt-transport-https
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-sudo apt update
-sudo apt install -y code
+# echo "Installing VSCode..."
+# sudo apt install -y software-properties-common apt-transport-https
+# wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+# sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+# sudo apt update
+# sudo apt install -y code
 
 
 #  * ! Install Mozilla Firefox
@@ -70,19 +72,19 @@ sudo apt install -y code
 echo "Installing Mozilla Firefox..."
 sudo apt install -y firefox
 
-#  * ! Install Docker
+# #  * ! Install Docker
 
-echo "Installing Docker..."
-sudo apt install -y docker.io
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo usermod -aG docker $USER
+# echo "Installing Docker..."
+# sudo apt install -y docker.io
+# sudo systemctl start docker
+# sudo systemctl enable docker
+# sudo usermod -aG docker $USER
 
 
-#  * ! Install Docker Compose
+# #  * ! Install Docker Compose
 
-echo "Installing Docker Compose..."
-sudo apt install -y docker-compose
+# echo "Installing Docker Compose..."
+# sudo apt install -y docker-compose
 
 
 #  * ! Install Oh My Zsh
