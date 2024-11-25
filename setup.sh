@@ -3,127 +3,80 @@
 echo "Install setup for Monsieur Canard !"
 echo "You need to have an internet connection and sudo rights."
 
-# Detect the Linux distribution
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS=$ID
-else
-    echo "Unsupported distribution"
-    exit 1
-fi
+# Corriger les problèmes de dpkg interrompu
+sudo dpkg --configure -a
 
-# Function to install packages for Debian/Ubuntu
-install_debian() {
-	echo "Debian/Ubuntu detected ! Installing packages..."
-    sudo apt-get update -y && sudo apt-get upgrade -y
-    sudo apt-get install -y build-essential git curl valgrind wget python3 python3-pip g++ make gcc clang-15
-    sudo apt-get install -y software-properties-common apt-transport-https snapd
-    sudo systemctl enable --now snapd.socket
-    sudo ln -s /var/lib/snapd/snap /snap
-    sudo snap install code --classic
-    sudo apt update
-    sudo apt install -y firefox
-	#  docker.io docker-compose
-    # sudo systemctl start docker
-    # sudo systemctl enable docker
-    # sudo usermod -aG docker $USER
-}
+# Corriger les dépendances cassées
+sudo apt-get install -f -y
 
-# # Function to install packages for Fedora
-# install_fedora() {
-# 	echo "Fedora detected ! Installing packages..."
-#     sudo dnf update -y
-#     sudo dnf install -y @development-tools git curl valgrind wget python3 python3-pip gcc-c++ make clang
-#     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-#     sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-#     sudo dnf check-update
-#     sudo dnf install -y code firefox docker docker-compose
-#     sudo systemctl start docker
-#     sudo systemctl enable docker
-#     sudo usermod -aG docker $USER
-# }
+# Nettoyer le cache d'APT
+sudo apt-get clean
 
-# Install packages based on the detected distribution
-case $OS in
-    ubuntu|debian)
-        install_debian
-        ;;
-    fedora)
-        install_fedora
-        ;;
-    *)
-        echo "Unsupported distribution: $OS ! Sorry :("
-        exit 1
-        ;;
-esac
+# Mettre à jour la liste des paquets
+sudo apt-get update
 
-#  * ! Install Vscode
+# Vérifier les paquets cassés
+sudo apt-get check
 
-# echo "Installing VSCode..."
-# sudo apt install -y software-properties-common apt-transport-https
-# wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-# sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-# sudo apt update
-# sudo apt install -y code
-
-
-#  * ! Install Mozilla Firefox
-
-echo "Installing Mozilla Firefox..."
-sudo apt install -y firefox
-
-# #  * ! Install Docker
-
-# echo "Installing Docker..."
-# sudo apt install -y docker.io
-# sudo systemctl start docker
-# sudo systemctl enable docker
-# sudo usermod -aG docker $USER
-
-
-# #  * ! Install Docker Compose
-
-# echo "Installing Docker Compose..."
-# sudo apt install -y docker-compose
-
+# Installer Zsh
+echo "Installing Zsh..."
 sudo apt install -y zsh
 
-#  * ! Install Oh My Zsh
+# Installer Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	echo "Install Oh My Zsh..."
-	RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	chsh -s $(which zsh)
+    echo "Installing Oh My Zsh..."
+    RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    chsh -s $(which zsh) $USER
 else 
-	echo "Oh My Zsh already installed."
+    echo "Oh My Zsh already installed."
 fi
 
-cat .zshrc >> "$HOME/.zshrc"
-#  * ! Install Zsh plugins
+# Copier le fichier .zshrc
+if [ -f .zshrc ]; then
+    echo "Copying .zshrc..."
+    cat .zshrc >> "$HOME/.zshrc"
+else
+    echo ".zshrc file not found!"
+fi
 
-echo "Install Zsh plugins..."
+# Installer les plugins Zsh
+echo "Installing Zsh plugins..."
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
-	git clone https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 fi
 
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
-	git clone https://github.com/zsh-users/zsh-completions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
+    git clone https://github.com/zsh-users/zsh-completions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 fi
 
-
-#  * ! Install Powerlevel10k
+# Installer Powerlevel10k
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
-	echo "Installation de Powerlevel10k..."
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-	sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' "$HOME/.zshrc"
-	echo "Configuration de Powerlevel10k..."
+    echo "Installing Powerlevel10k..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+    sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' "$HOME/.zshrc"
+    echo "Configuring Powerlevel10k..."
 else
-	echo "Powerlevel10k est déjà installé."
+    echo "Powerlevel10k is already installed."
 fi
-cat .p10k.zsh >> "$HOME/.p10k.zsh"
 
+# Copier le fichier .p10k.zsh
+if [ -f .p10k.zsh ]; then
+    echo "Copying .p10k.zsh..."
+    cat .p10k.zsh >> "$HOME/.p10k.zsh"
+else
+    echo ".p10k.zsh file not found!"
+fi
+
+# Ajouter la source de .p10k.zsh dans .zshrc
 if ! grep -q "source $HOME/.p10k.zsh" "$HOME/.zshrc"; then
-	echo "source $HOME/.p10k.zsh" >> "$HOME/.zshrc"
+    echo "Adding source for .p10k.zsh to .zshrc..."
+    echo "source $HOME/.p10k.zsh" >> "$HOME/.zshrc"
 fi
 
-# Clean up unnecessary packages
+# Nettoyer les paquets inutiles
 sudo apt-get autoremove -y
+
+echo "Script execution completed successfully."
+
+# Redémarrer le shell pour appliquer les changements
+exec zsh
