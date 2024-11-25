@@ -86,6 +86,7 @@ sudo apt install -y firefox
 # echo "Installing Docker Compose..."
 # sudo apt install -y docker-compose
 
+sudo apt install -y zsh
 
 #  * ! Install Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -96,7 +97,7 @@ else
 	echo "Oh My Zsh already installed."
 fi
 
-cat ./zshrc >> "$HOME/.zshrc"
+cat .zshrc >> "$HOME/.zshrc"
 #  * ! Install Zsh plugins
 
 echo "Install Zsh plugins..."
@@ -115,10 +116,10 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
 	sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' "$HOME/.zshrc"
 	echo "Configuration de Powerlevel10k..."
-	cat p10k.zsh >> "$HOME/.p10k.zsh"
 else
 	echo "Powerlevel10k est déjà installé."
 fi
+cat .p10k.zsh >> "$HOME/.p10k.zsh"
 
 if ! grep -q "source $HOME/.p10k.zsh" "$HOME/.zshrc"; then
 	echo "source $HOME/.p10k.zsh" >> "$HOME/.zshrc"
