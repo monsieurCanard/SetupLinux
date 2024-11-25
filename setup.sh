@@ -29,19 +29,19 @@ install_debian() {
     # sudo usermod -aG docker $USER
 }
 
-# Function to install packages for Fedora
-install_fedora() {
-	echo "Fedora detected ! Installing packages..."
-    sudo dnf update -y
-    sudo dnf install -y @development-tools git curl valgrind wget python3 python3-pip gcc-c++ make clang
-    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-    sudo dnf check-update
-    sudo dnf install -y code firefox docker docker-compose
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    sudo usermod -aG docker $USER
-}
+# # Function to install packages for Fedora
+# install_fedora() {
+# 	echo "Fedora detected ! Installing packages..."
+#     sudo dnf update -y
+#     sudo dnf install -y @development-tools git curl valgrind wget python3 python3-pip gcc-c++ make clang
+#     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+#     sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+#     sudo dnf check-update
+#     sudo dnf install -y code firefox docker docker-compose
+#     sudo systemctl start docker
+#     sudo systemctl enable docker
+#     sudo usermod -aG docker $USER
+# }
 
 # Install packages based on the detected distribution
 case $OS in
@@ -96,13 +96,7 @@ else
 	echo "Oh My Zsh already installed."
 fi
 
-echo alias work='cd ~/Documents/Work' >> "$HOME/.zshrc"
-
-echo alias cl='clear' >> "$HOME/.zshrc"
-echo alias vleak='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes' >> "$HOME/.zshrc"
-echo alias vfd='valgrind --track-fds=yes' >> "$HOME/.zshrc"
-echo alias vchild='valgrind --track-children=yes' >> "$HOME/.zshrc"
-
+cat ./zshrc >> "$HOME/.zshrc"
 #  * ! Install Zsh plugins
 
 echo "Install Zsh plugins..."
