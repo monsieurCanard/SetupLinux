@@ -115,11 +115,7 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
 	sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' "$HOME/.zshrc"
 	echo "Configuration de Powerlevel10k..."
-	cat << 'EOF' >> ~/.p10k.zsh
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-EOF
+	cat p10k.zsh >> "$HOME/.p10k.zsh"
 else
 	echo "Powerlevel10k est déjà installé."
 fi
