@@ -34,6 +34,21 @@ PROFILE=${PROFILE%/}
 dconf write /org/gnome/terminal/legacy/profiles:/$PROFILE/font "'JetBrainsMono Nerd Font Mono 12'"
 dconf write /org/gnome/terminal/legacy/profiles:/$PROFILE/use-system-font false
 
+if [ -f .zshrc ]; then
+    echo "Copying .zshrc..."
+    cat .zshrc > "$HOME/.zshrc"
+else
+    echo ".zshrc file not found!"
+fi
+
+# Copier le fichier .p10k.zsh
+if [ -f .p10k.zsh ]; then
+    echo "Copying .p10k.zsh..."
+    cat .p10k.zsh > "$HOME/.p10k.zsh"
+else
+    echo ".p10k.zsh file not found!"
+fi
+
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing Oh My Zsh..."
     RUNZSH=no sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -42,12 +57,6 @@ else
     echo "Oh My Zsh already installed."
 fi
 
-if [ -f .zshrc ]; then
-    echo "Copying .zshrc..."
-    cat .zshrc > "$HOME/.zshrc"
-else
-    echo ".zshrc file not found!"
-fi
 
 echo "Installing Zsh plugins..."
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
@@ -71,13 +80,6 @@ else
     echo "Powerlevel10k is already installed."
 fi
 
-# Copier le fichier .p10k.zsh
-if [ -f .p10k.zsh ]; then
-    echo "Copying .p10k.zsh..."
-    cat .p10k.zsh > "$HOME/.p10k.zsh"
-else
-    echo ".p10k.zsh file not found!"
-fi
 
 sudo apt-get autoremove -y
 
