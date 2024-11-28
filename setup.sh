@@ -43,12 +43,9 @@ else
     echo "Oh My Zsh already installed."
 fi
 
-if [ -f .zshrc ]; then
-    echo "Copying .zshrc..."
-    cat .zshrc > "$HOME/.zshrc"
-else
-    echo ".zshrc file not found!"
-fi
+
+cat .zshrc > "$HOME/.zshrc"
+
 
 
 echo "Installing Zsh plugins..."
@@ -67,13 +64,9 @@ else
     echo "Powerlevel10k is already installed."
 fi
 
-# Copier le fichier .p10k.zsh
-if [ -f .p10k.zsh ]; then
-    echo "Copying .p10k.zsh..."
-    cp .p10k.zsh "$HOME/.p10k.zsh"
-else
-    echo ".p10k.zsh file not found!"
-fi
+
+cp .p10k.zsh "$HOME/.p10k.zsh"
+
 
 # Ajouter la source de .p10k.zsh dans .zshrc
 if ! grep -q "source $HOME/.p10k.zsh" "$HOME/.zshrc"; then
