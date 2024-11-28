@@ -13,7 +13,7 @@ sudo apt-get update
 
 sudo apt-get check
 
-sudo apt install -y git curl wget zsh fonts-powerline 
+sudo apt install -y curl wget zsh fonts-powerline 
 
 echo "Installing Zsh..."
 sudo apt install -y zsh
@@ -22,15 +22,17 @@ echo "Installing fonts for Powerlevel10k..."
 FONT_DIR="$HOME/.local/share/fonts"
 mkdir -p "$FONT_DIR"
 
-# Télécharger toutes les variantes de la police
-wget -qO "$FONT_DIR/MesloLGS NF Regular.ttf" https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-wget -qO "$FONT_DIR/MesloLGS NF Bold.ttf" https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-wget -qO "$FONT_DIR/MesloLGS NF Italic.ttf" https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-wget -qO "$FONT_DIR/MesloLGS NF Bold Italic.ttf" https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+wget  https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip -O /tmp/JetBrainsMono.zip
+unzip -o /tmp/JetBrainsMono.zip -d "$FONT_DIR"
+rm -f /tmp/JetBrainsMono.zip
 
 # Mettre à jour le cache des polices
 fc-cache -fv
 
+PROFILE=$(dconf list /org/gnome/terminal/legacy/profiles:/ | grep '^:' | head -n1)
+PROFILE=${PROFILE%/}
+dconf write /org/gnome/terminal/legacy/profiles:/$PROFILE/font "'JetBrainsMono Nerd Font Mono 12'"
+dconf write /org/gnome/terminal/legacy/profiles:/$PROFILE/use-system-font false
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing Oh My Zsh..."
@@ -59,7 +61,7 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     echo "Installing Powerlevel10k..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-    # echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
     echo "Configuring Powerlevel10k..."
 else
     echo "Powerlevel10k is already installed."
@@ -77,5 +79,6 @@ sudo apt-get autoremove -y
 
 echo "Script execution completed successfully."
 
-sudo reboot
+exec zsh
 
+sudo reboot
