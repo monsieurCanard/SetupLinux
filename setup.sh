@@ -15,8 +15,9 @@ sudo apt-get update
 
 sudo apt-get check
 
-sudo apt install -y curl wget zsh fonts-powerline fzf valgrind clang
+sudo apt install -y curl wget zsh fonts-powerline fzf valgrind clang snapd
 
+sudo snap install --classic code
 
 # ! INSTALLATION OF NERD FONTS
 
@@ -48,7 +49,6 @@ fi
 
 cat .zshrc > "$HOME/.zshrc"
 
-
 # ! INSTALLATION OF ZSH PLUGINS
 
 echo "Installing Zsh plugins..."
@@ -76,10 +76,6 @@ if ! grep -q "source $HOME/.p10k.zsh" "$HOME/.zshrc"; then
     echo "Adding source for .p10k.zsh to .zshrc..."
     echo "source $HOME/.p10k.zsh" >> "$HOME/.zshrc"
 fi
-
-# ! INSTALLATION OF Z CD COMMAND
-
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # ! END OF INSTALLATION
 
