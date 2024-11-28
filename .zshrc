@@ -214,9 +214,7 @@ fi
 
 clear
 echo THIS IS WHERE YOU CODE
-# chuck | cowsay -f stegosaurus | lolcat
-alias cl='clear && chuck | cowsay | lolcat'
-alias ..='cd ..'
+alias cl='clear'
 alias bashrc='cd ~/../../home/anthony && code .bashrc'
 alias work='cd $HOME/Documents/'
 alias val="valgrind --track-origins=yes"
