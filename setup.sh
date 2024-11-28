@@ -43,6 +43,13 @@ else
     echo "Oh My Zsh already installed."
 fi
 
+if [ -f .zshrc ]; then
+    echo "Copying .zshrc..."
+    cat .zshrc > "$HOME/.zshrc"
+else
+    echo ".zshrc file not found!"
+fi
+
 
 echo "Installing Zsh plugins..."
 if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
@@ -55,30 +62,23 @@ fi
 
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     echo "Installing Powerlevel10k..."
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-    
-    if ! grep -q 'source ~/powerlevel10k/powerlevel10k.zsh-theme' "$HOME/.zshrc"; then
-    echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> "$HOME/.zshrc"
-    fi
-    
-    echo "Configuring Powerlevel10k..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
 else
     echo "Powerlevel10k is already installed."
-fi
-
-if [ -f .zshrc ]; then
-    echo "Copying .zshrc..."
-    cat .zshrc > "$HOME/.zshrc"
-else
-    echo ".zshrc file not found!"
 fi
 
 # Copier le fichier .p10k.zsh
 if [ -f .p10k.zsh ]; then
     echo "Copying .p10k.zsh..."
-    cat .p10k.zsh > "$HOME/.p10k.zsh"
+    cp .p10k.zsh "$HOME/.p10k.zsh"
 else
     echo ".p10k.zsh file not found!"
+fi
+
+# Ajouter la source de .p10k.zsh dans .zshrc
+if ! grep -q "source $HOME/.p10k.zsh" "$HOME/.zshrc"; then
+    echo "Adding source for .p10k.zsh to .zshrc..."
+    echo "source $HOME/.p10k.zsh" >> "$HOME/.zshrc"
 fi
 
 sudo apt-get autoremove -y
