@@ -32,7 +32,7 @@ This Bash script automates the installation of a complete development environmen
    ```bash
    sudo reboot
    ```
-
+⚠ You can use your own .zshrc and .p10k.zsh in user_file directory
 
 ## 🔧 Included Configurations
 
