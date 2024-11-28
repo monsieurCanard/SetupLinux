@@ -63,14 +63,3 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 else
 	echo "Rust language setup not installed."
 fi
-
-# ! INSTALLATION OF NODEJS LANGUAGE
-echo "Do you use NodeJS ? (y/n)"
-read -r response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-	echo "Installing NodeJS language setup for Monsieur Canard !"
-	curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-	sudo apt-get install -y nodejs
-else
-	echo "NodeJS language setup not installed."
-fi
