@@ -13,6 +13,17 @@ sudo apt-get update
 
 sudo apt-get check
 
-sudo apt install -y curl wget zsh fonts-powerline fzf valgrind clang snapd
+sudo apt install -y git curl wget zsh fonts-powerline fzf valgrind clang snapd 
 
-sudo snap install --classic code
+echo "You use Visual Studio Code, Vim or Emacs ? (vscode/vim/emacs)"
+read -r response
+if [[ "$response" =~ ^([vV][sS][cC][oO][dD][eE])$ ]]; then
+	echo "Installing Visual Studio Code..."
+	sudo snap install --classic code
+elif [[ "$response" =~ ^([vV][iI][mM])$ ]]; then
+	echo "Installing Vim..."
+	sudo apt-get install -y vim
+elif [[ "$response" =~ ^([eE][mM][aA][cC][sS])$ ]]; then
+	echo "Installing Emacs..."
+	sudo apt-get install -y emacs
+fi
