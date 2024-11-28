@@ -1,4 +1,4 @@
-./setup.sh
+(./setup.sh)
 wait $!
 echo "Setup done."
 echo "You need to restart your terminal."
