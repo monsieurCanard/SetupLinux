@@ -48,7 +48,6 @@ This Bash script automates the installation of a complete development environmen
 - PHP: `php`, `php-cli`
 - JAVA: `default-jdk`, `default-jre`
 - RUST: `rls`, `rust-analysis`, `rust-src`
-- NODEJS: `nodejs`
 
 ### Docker
 
