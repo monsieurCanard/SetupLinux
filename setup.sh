@@ -40,6 +40,13 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
     git clone https://github.com/zsh-users/zsh-completions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 fi
 
+echo "Installing fonts for Powerlevel10k..."
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+mkdir -p ~/.local/share/fonts
+mv MesloLGS%20NF%20Regular.ttf ~/.local/share/fonts/
+fc-cache -f -v
+
+
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     echo "Installing Powerlevel10k..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
@@ -61,3 +68,6 @@ sudo apt-get autoremove -y
 echo "Script execution completed successfully."
 
 exec zsh
+
+cat ~/.zshrc
+cat ~/.p10k.zsh
