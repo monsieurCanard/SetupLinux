@@ -13,7 +13,7 @@ sudo apt-get update
 
 sudo apt-get check
 
-sudo apt install -y git curl wget zsh fonts-powerline fzf valgrind clang snapd 
+sudo apt install -y build-essential git curl wget zsh fonts-powerline fzf valgrind clang snapd 
 
 echo "You use Visual Studio Code, Vim or Emacs ? (vscode/vim/emacs)"
 read -r response
