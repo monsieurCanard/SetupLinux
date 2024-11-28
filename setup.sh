@@ -61,7 +61,11 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
     echo "Installing Powerlevel10k..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-    echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    
+    if ! grep -q 'source ~/powerlevel10k/powerlevel10k.zsh-theme' "$HOME/.zshrc"; then
+    echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> "$HOME/.zshrc"
+    fi
+    
     echo "Configuring Powerlevel10k..."
 else
     echo "Powerlevel10k is already installed."
@@ -79,6 +83,6 @@ sudo apt-get autoremove -y
 
 echo "Script execution completed successfully."
 
-exec zsh
+source ~/.zshrc
 
-sudo reboot
+exec zsh
