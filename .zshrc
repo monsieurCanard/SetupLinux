@@ -164,7 +164,6 @@ fi
 # xterm*|rxvt*)
 #     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 #     ;;
-# *)
 #     ;;
 # esac
 
@@ -217,11 +216,11 @@ echo THIS IS WHERE YOU CODE
 alias cl='clear'
 alias bashrc='cd ~/../../home/anthony && code .bashrc'
 alias work='cd $HOME/Documents/'
-alias val="valgrind --track-origins=yes"
-alias vleak="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes"
-alias vfd="valgrind --track-origins=yes --track-fds=yes"
-alias vchild="valgrind --track-origins=yes --trace-children=yes"
-alias vall="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes"
+alias val='valgrind --track-origins=yes'
+alias vleak='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
+alias vfd='valgrind --track-origins=yes --track-fds=yes'
+alias vchild='valgrind --track-origins=yes --trace-children=yes'
+alias vall='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

@@ -13,7 +13,7 @@ sudo apt-get update
 
 sudo apt-get check
 
-sudo apt install -y curl wget zsh fonts-powerline 
+sudo apt install -y curl wget zsh fonts-powerline fzf
 
 echo "Installing Zsh..."
 sudo apt install -y zsh
