@@ -214,7 +214,6 @@ fi
 clear
 echo THIS IS WHERE YOU CODE
 alias cl='clear'
-alias bashrc='cd ~/../../home/anthony && code .bashrc'
 alias work='cd $HOME/Documents/'
 alias val='valgrind --track-origins=yes'
 alias vleak='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
