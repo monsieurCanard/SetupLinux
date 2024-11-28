@@ -1,23 +1,6 @@
 #!/bin/bash
 
-echo "Install setup for Monsieur Canard !"
-echo "You need to have an internet connection and sudo rights."
-
-# ! INSTALLATION ESSENTIALS
-
-sudo dpkg --configure -a
-
-sudo apt-get install -f -y
-
-sudo apt-get clean
-
-sudo apt-get update
-
-sudo apt-get check
-
-sudo apt install -y curl wget zsh fonts-powerline fzf valgrind clang snapd
-
-sudo snap install --classic code
+echo "Install terminal setup for Monsieur Canard !"
 
 # ! INSTALLATION OF NERD FONTS
 
@@ -45,7 +28,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 else 
     echo "Oh My Zsh already installed."
 fi
-
 
 cat .zshrc > "$HOME/.zshrc"
 
