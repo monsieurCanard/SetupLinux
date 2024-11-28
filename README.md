@@ -59,6 +59,18 @@ This Bash script automates the installation of a complete development environmen
 - Powerlevel10k download: configured as default theme
 - JetBrainMono Nerd Font: installed for optimal compatibility.
 
+### Aliases
+
+```bash
+alias cl='clear'
+alias work='cd $HOME/Documents/'
+alias val='valgrind --track-origins=yes'
+alias vleak='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
+alias vfd='valgrind --track-origins=yes --track-fds=yes'
+alias vchild='valgrind --track-origins=yes --trace-children=yes'
+alias vall='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes'
+```
+
 ## 🤝 Contribution
 Contributions are welcome! Feel free to open an issue or submit a pull request
 
