@@ -77,6 +77,5 @@ sudo apt-get autoremove -y
 
 echo "Script execution completed successfully."
 
-exec zsh
-
 sudo reboot
+
