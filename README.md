@@ -1,3 +1,4 @@
+![Frame 27](https://github.com/user-attachments/assets/c326eb30-8f2f-424a-a0c2-1d2988325cb7)
 # 🛠️ Essential Dev Setup Script
 
 This Bash script automates the installation of a complete development environment on a minimal Linux installation. It installs essential packages, language-specific tools, Docker, and a Zsh terminal customized with the Powerlevel10k theme and JetBrains Mono Nerd Font.
