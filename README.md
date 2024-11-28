@@ -25,7 +25,7 @@ This Bash script automates the installation of a complete development environmen
 
 1. Clone this repository and execute script:
    ```bash
-   git clone https://github.com/your-repo/setup-script.git
+   git clone https://github.com/monsieurCanard/SetupLinux.git
    cd setup-script && bash run_setup.sh
    ```
 2. Reboot
