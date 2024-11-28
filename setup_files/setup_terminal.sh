@@ -29,7 +29,7 @@ else
     echo "Oh My Zsh already installed."
 fi
 
-cat .zshrc > "$HOME/.zshrc"
+cat ./user_files/.zshrc > "$HOME/.zshrc"
 
 # ! INSTALLATION OF ZSH PLUGINS
 
@@ -52,7 +52,7 @@ else
 fi
 
 
-cp .p10k.zsh "$HOME/.p10k.zsh"
+cp ./user_files/.p10k.zsh "$HOME/.p10k.zsh"
 
 if ! grep -q "source $HOME/.p10k.zsh" "$HOME/.zshrc"; then
     echo "Adding source for .p10k.zsh to .zshrc..."

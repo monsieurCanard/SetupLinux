@@ -26,6 +26,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 	echo "Installing Python language setup for Monsieur Canard !"
 	sudo apt-get install -y python3 python3-pip
 	pip3 install --upgrade pip
+	pip3 install virtualenv
 else
 	echo "Python language setup not installed."
 fi
