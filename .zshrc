@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(chucknorris web-search thefuck zsh-interactive-cd)
+plugins=(zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -103,20 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
-toilet --gay MonsieurC
-alias work='cd OneDrive/Bureau/42'
-alias l='ls'
-alias ll='ls -al'
-alias ..='cd ..'
-alias cl='clear && toilet --gay MonsieurC'
-alias grademe='bash -c "$(curl https://grademe.fr)"'
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
+# 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -225,17 +212,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval $(thefuck --alias)
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 clear
-echo THIS IS WHERE YOU CODE | lolcat
-chuck | cowsay -f stegosaurus | lolcat
+echo THIS IS WHERE YOU CODE
+# chuck | cowsay -f stegosaurus | lolcat
 alias cl='clear && chuck | cowsay | lolcat'
 alias ..='cd ..'
 alias bashrc='cd ~/../../home/anthony && code .bashrc'
-alias work='cd ~/../../home/anthony/Documents/42'
-# alias projet='cd ~/../../home/anthony/Documents/42/6-Fract-ol'
-# alias c='cmatrix -u 4 -C cyan'export PATH=/home/anthony/.local/funcheck/host:$PATH
+alias work='cd $HOME/Documents/'
 alias val="valgrind --track-origins=yes"
 alias vleak="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias vfd="valgrind --track-origins=yes --track-fds=yes"
@@ -245,4 +228,3 @@ alias vall="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH=/home/anthony/.local/funcheck/host:$PATH
