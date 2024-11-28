@@ -1,15 +1,14 @@
+![Frame 27](https://github.com/user-attachments/assets/c326eb30-8f2f-424a-a0c2-1d2988325cb7)
 # 🛠️ Essential Dev Setup Script
 
 This Bash script automates the installation of a complete development environment on a minimal Linux installation. It installs essential packages, language-specific tools, Docker, and a Zsh terminal customized with the Powerlevel10k theme and JetBrains Mono Nerd Font.
 
----
 
 ## 🖥️ Prerequisites
 
 - An `apt`-based Linux distribution (Debian, Ubuntu, etc.).
 - Root access or `sudo` privileges.
 
----
 
 ## 🚀 Features
 
@@ -21,23 +20,26 @@ This Bash script automates the installation of a complete development environmen
   - Configures the Powerlevel10k theme.
   - Adds the JetBrains Mono Nerd Font for a visually appealing terminal experience.
 
----
 
 ## 📦 Installation
 
 1. Clone this repository and execute script:
    ```bash
-   git clone https://github.com/your-repo/setup-script.git
-   cd setup-script && bash run_setup.sh
+   git clone https://github.com/monsieurCanard/SetupVM.git
+   cd SetupVM && bash run_setup.sh
    ```
-2. Reboot your machine
+2. Reboot
    ```bash
    sudo reboot
    ```
-
----
+⚠ You can use your own .zshrc and .p10k.zsh in user_file directory
 
 ## 🔧 Included Configurations
+
+## IDE
+- Vscode
+- Vim
+- Emacs
 
 ### Languages
 
@@ -58,9 +60,6 @@ This Bash script automates the installation of a complete development environmen
 - Powerlevel10k download: configured as default theme
 - JetBrainMono Nerd Font: installed for optimal compatibility.
 
-🤝 Contribution
+## 🤝 Contribution
 Contributions are welcome! Feel free to open an issue or submit a pull request
 
-## 📜 License
-
-This project is licensed under the MIT License
