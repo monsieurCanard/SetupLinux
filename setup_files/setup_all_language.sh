@@ -4,7 +4,7 @@
 echo "Do you use C language ? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-	echo "Installing C language setup for Monsieur Canard !"
+	echo "Installing C language package for Monsieur Canard !"
 	sudo apt-get install -y gcc gdb
 else
 	echo "C language setup not installed."
@@ -14,21 +14,22 @@ fi
 echo "Do you use C++ language ? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+	echo "Installing C++ language package for Monsieur Canard !"
 	sudo apt-get install -y g++ gdb 
 else
-	echo "C++ language setup not installed."
+	echo "C++ language package not installed."
 fi
 
 # ! INSTALLATION OF PYTHON LANGUAGE
 echo "Do you use Python language ? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-	echo "Installing Python language setup for Monsieur Canard !"
+	echo "Installing Python language package for Monsieur Canard !"
 	sudo apt-get install -y python3 python3-pip
 	pip3 install --upgrade pip
 	pip3 install virtualenv
 else
-	echo "Python language setup not installed."
+	echo "Python language package not installed."
 fi
 
 # ! INSTALLATION OF PHP LANGUAGE
@@ -36,7 +37,7 @@ echo "Do you use PHP language ? (y/n)"
 read -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 	echo "Installing PHP language setup for Monsieur Canard !"
-	sudo apt-get install -y php php-cli
+	sudo apt-get install -y php-dev php-cli php-mysql
 else
 	echo "PHP language setup not installed."
 fi
