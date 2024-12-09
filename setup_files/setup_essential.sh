@@ -18,7 +18,7 @@ sudo apt-get check
 sudo apt install -y \
 	 build-essential git curl \
 	 wget zsh fonts-powerline \
-	 fzf valgrind clang \
+	 fzf valgrind clang snapd\
 
 sudo apt-get autoremove -y
 
@@ -26,9 +26,7 @@ echo "You use Visual Studio Code, NeoVim or Emacs ? (vscode/nvim/emacs)"
 read -r response
 if [[ "$response" =~ ^([vV][sS][cC][oO][dD][eE])$ ]]; then
 	echo "Installing Visual Studio Code..."
-	sudo wget -https://vscode.download.prss.microsoft.com/dbazure/download/stable/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/code_1.95.3-1731513102_amd64.deb -O /tmp/vscode.deb
-	sudo apt install ./tmp/vscode.deb
-	rm -f /tmp/vscode.deb
+	sudo snap install --classic code
 elif [[ "$response" =~ ^([nN][vV][iI][mM])$ ]]; then
 	echo "Installing NeoVim..."
 	sudo apt install -y neovim
